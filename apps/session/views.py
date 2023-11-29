@@ -17,7 +17,7 @@ def iniciar_sesion(request):
             if user is not None:
                 login(request, user)
                 messages.success(request, f"Bienvenido, {username}. Has iniciado sesión con éxito.")
-                return redirect('index')  # Reemplaza 'inicio' con la URL a la que quieres redirigir después del inicio de sesión.
+                return redirect('index')  
             else:
                 messages.error(request, "Usuario o contraseña incorrectos.")
         else:

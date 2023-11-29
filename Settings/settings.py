@@ -29,6 +29,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     "apps.session",
     "apps.barbary",
+    "apps.data",
+
    
 ]
 
