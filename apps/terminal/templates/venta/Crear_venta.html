@@ -11,35 +11,35 @@
                         <ul class="nav nav-tabs">
 
                             <li class="nav-item">
-                                <a class="nav-link active" data-toggle="tab" href="#tab-persona">Documento Vehiculo</a>
+                                <a class="nav-link active" data-toggle="tab" href="#tab-persona">Venta</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" data-toggle="tab" href="#tab-documento">Caracteristicas</a>
+                                <a class="nav-link" data-toggle="tab" href="#tab-documento">Cliente</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" data-toggle="tab" href="#tab-ubicacion">Ruta</a>
+                                <a class="nav-link" data-toggle="tab" href="#tab-ubicacion">Tiquete</a>
                             </li>
 
                         </ul>
                     </div>
                     <div class="card-body">
-                        <form method="POST" action="{% url 'crear_vehiculo' %}">
+                        <form method="POST" action="{% url 'crear_venta' %}">
                             {% csrf_token %}
                             <div class="tab-content">
                                 <div class="tab-pane fade show active" id="tab-persona">
                                     <!-- Campos de Persona -->
                                     <div class="form-group">
-                                        <label for="Documento_vehi">Documento:</label>
-                                        <select class="form-control" id="Documento_vehi" name="Documento_vehi" required>
+                                        <label for="Ruta">Ruta:</label>
+                                        <select class="form-control" id="Ruta" name="Ruta" required>
                                             <option value="">Seleccione</option>
-                                            {% for datas in data_Documento %}
-                                            <option value="{{ datas.id }}">{{ datas.tipo_documento }}</option>
+                                            {% for datas in data_ruta %}
+                                            <option value="{{ datas.id }}">{{ datas.id }}</option>
                                             {% endfor %}
                                         </select>
                                     </div>
                                     <div class="form-group">
-                                        <label for="tipo_documento">Estado:</label>
-                                        <select class="form-control" id="tipo_estado_documento_vehi" name="tipo_estado_documento_vehi" required>
+                                        <label for="estado">Estado:</label>
+                                        <select class="form-control" id="estado" name="estado" required>
                                             <option value="">Seleccione</option>
                                             {% for datas in data %}
                                             <option value="{{ datas.id }}">{{ datas.descripcion_estado }}</option>
@@ -47,26 +47,41 @@
                                         </select>
                                     </div>
                                     <div class="form-group">
-                                        <label for="fecha">fecha tramite:</label>
-                                        <input type="date" class="form-control" id="fecha_tramite" name="fecha_tramite"
+                                        <label for="Vehiculo">Vehiculo:</label>
+                                        <select class="form-control" id="Vehiculo" name="Vehiculo" required>
+                                            <option value="">Seleccione</option>
+                                            {% for datas in data_vehiculo %}
+                                            <option value="{{ datas.id }}">{{ datas.placa }}</option>
+                                            {% endfor %}
+                                        </select>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="fecha_venta">fecha venta:</label>
+                                        <input type="date" class="form-control" id="fecha_venta" name="fecha_venta"
                                             required>
                                     </div>
                                     <div class="form-group">
-                                        <label for="fecha">fecha expiracion:</label>
-                                        <input type="date" class="form-control" id="fecha_expiracion"
-                                            name="fecha_expiracion" required>
+                                        <label for="totalneto">Total neto:</label>
+                                        <input type="number" class="form-control" id="totalneto" name="totalneto" step="any" required>
                                     </div>
                                     <div class="form-group">
-                                        <label for="check">vigente:</label>
-                                        <input type="checkbox" id="check" name="check">
+                                        <label for="totalbruto">total bruto:</label>
+                                        <input type="number" class="form-control" id="totalbruto" name="totalbruto" step="any" required>
                                     </div>
+                                    
+                                    <div class="form-group">
+                                        <label for="procentajedescuento">descuento:</label>
+                                        <input type="number" class="form-control" id="procentajedescuento" name="procentajedescuento" step="any" required>
+                                    </div>
+                                   
+                                    
                                 </div>
                                 <div class="tab-pane fade" id="tab-documento">
                                     <!-- Campos de Ubicación -->
                                     <div class="form-group">
-                                        <label for="tipo_documento">Estado Carroceria:</label>
-                                        <select class="form-control" id="tipo_estado_Carroceria"
-                                            name="tipo_estado_Carroceria" required>
+                                        <label for="Estado_Cliente">Estado Cliente:</label>
+                                        <select class="form-control" id="Estado_Cliente"
+                                            name="Estado_Cliente" required>
                                             <option value="">Seleccione</option>
                                             {% for datas in data %}
                                             <option value="{{ datas.id }}">{{ datas.descripcion_estado }}</option>
@@ -74,155 +89,39 @@
                                         </select>
                                     </div>
                                     <div class="form-group">
-                                        <label for="nombre_carroceria">nombre carroceria:</label>
-                                        <input type="text" class="form-control" id="nombre_carroceria"
-                                            name="nombre_carroceria" required>
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="carro_detalle">carro detalle:</label>
-                                        <input type="text" class="form-control" id="carro_detalle" name="carro_detalle"
-                                            required>
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="Marca">Marca:</label>
-                                        <input type="text" class="form-control" id="Marca" name="Marca" required>
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="Color">Color:</label>
-                                        <input type="text" class="form-control" id="Color" name="Color" required>
-                                    </div>
-                                </div>
-                                <div class="tab-pane fade" id="tab-ubicacion">
-                                    <!-- Campos de Ubicación -->
-                                    <div class="form-group">
-                                        <label for="tipo_estado_ruta">Estado:</label>
-                                        <select class="form-control" id="tipo_estado_ruta" name="tipo_estado_ruta"
-                                            required>
+                                        <label for="data_persona">Personas:</label>
+                                        <select class="form-control" id="data_persona" name="data_persona" required>
                                             <option value="">Seleccione</option>
-                                            {% for datas in data %}
-                                            <option value="{{ datas.id }}">{{ datas.descripcion_estado }}</option>
+                                            {% for datas in data_persona %}
+                                            <option value="{{ datas.id }}">{{ datas.nombres }}</option>
                                             {% endfor %}
                                         </select>
                                     </div>
                                     <div class="form-group">
-                                        <label for="Ciudad">Ciudad:</label>
-                                        <select class="form-control" id="Ciudad" name="Ciudad" required>
-                                            <option value="">Seleccione</option>
-                                            {% for datas in data_ciudad %}
-                                            <option value="{{ datas.id }}">{{ datas.nombre }}</option>
-                                            {% endfor %}
-                                        </select>
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="parada">hora parada:</label>
-                                        <input type="number" class="form-control" id="parada" name="parada" required>
-                                    </div>
-                                </div>
-
-                            </div>
-                            <div class="container mt-5">
-                                <h1 class="mb-4">Propetario</h1>
-
-                                <div class="form-group">
-                                    <label for="data_persona">Personas:</label>
-                                    <select class="form-control" id="data_persona" name="data_persona" required>
-                                        <option value="">Seleccione</option>
-                                        {% for datas in data_persona %}
-                                        <option value="{{ datas.id }}">{{ datas.nombres }}</option>
-                                        {% endfor %}
-                                    </select>
-                                </div>
-                                <div class="form-group">
-                                    <label for="tipo_documento">Estado:</label>
-                                    <select class="form-control" id="tipo_estado" name="tipo_estado" required>
-                                        <option value="">Seleccione</option>
-                                        {% for datas in data %}
-                                        <option value="{{ datas.id }}">{{ datas.descripcion_estado }}</option>
-                                        {% endfor %}
-                                    </select>
-                                </div>
-                                <div class="form-group">
-                                    <label for="fecha_tramite_pro">fecha tramite:</label>
-                                    <input type="date" class="form-control" id="fecha_tramite_pro" name="fecha_tramite_pro"
-                                        required>
-
-                                </div>
-                                <div class="container mt-5">
-                                    <h1 class="mb-4">Terminal</h1>
-
-                                    <div class="form-group">
-                                        <label for="Ciudad">Ciudad:</label>
-                                        <select class="form-control" id="Ciudad" name="Ciudad" required>
-                                            <option value="">Seleccione</option>
-                                            {% for datas in data_ciudad %}
-                                            <option value="{{ datas.id }}">{{ datas.nombre }}</option>
-                                            {% endfor %}
-                                        </select>
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="tipo_estado_terminal">Estado:</label>
-                                        <select class="form-control" id="tipo_estado_terminal" name="tipo_estado_terminal" required>
-                                            <option value="">Seleccione</option>
-                                            {% for datas in data %}
-                                            <option value="{{ datas.id }}">{{ datas.descripcion_estado }}</option>
-                                            {% endfor %}
-                                        </select>
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="codigo terminal">codigo terminal:</label>
-                                        <input type="number" class="form-control" id="codigo_terminal"
-                                            name="codigo_terminal" required>
-                                    </div>
-                                </div>
-                                <div class="container mt-5">
-                                    <h1 class="mb-4">Vehiculo</h1>
-
-                                 
-                                    <div class="form-group">
-                                        <label for="placa">placa:</label>
-                                        <input type="text" class="form-control" id="placa"
-                                            name="placa" required>
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="cilindraje">cilindraje:</label>
-                                        <input type="number" class="form-control" id="cilindraje"
-                                            name="cilindraje" required>
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="numerochasis">numero chasis:</label>
-                                        <input type="number" class="form-control" id="numerochasis"
-                                            name="numerochasis" required>
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="modelo">modelo:</label>
-                                        <input type="text" class="form-control" id="modelo"
-                                            name="modelo" required>
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="kilogramos">kilogramos:</label>
-                                        <input type="text" class="form-control" id="kilogramos"
-                                            name="kilogramos" required>
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="linea">linea:</label>
-                                        <input type="text" class="form-control" id="linea"
-                                            name="linea" required>
-                                    </div>
-                                </div>
-                                <div class="container mt-5">
-                                    <h1 class="mb-4">Conductor</h1>                                 
-                                    <div class="form-group">
-                                        <label for="fechainciotrabajo">fecha inico de trabajo:</label>
-                                        <input type="date" class="form-control" id="fechainciotrabajo" name="fechainciotrabajo"
-                                            required>
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="Experiencia">Experiencia:</label>
-                                        <input type="number" class="form-control" id="Experiencia" name="Experiencia"
+                                        <label for="fecha_registro">fecha registro:</label>
+                                        <input type="date" class="form-control" id="fecha_registro" step="any" name="fecha_registro"
                                             required>
                                     </div>
                                     
                                 </div>
+                                <div class="tab-pane fade" id="tab-ubicacion">
+                                    <!-- Campos de Ubicación -->
+                                   
+                                    <div class="form-group">
+                                        <label for="tiqvehiculo">tiq vehiculo:</label>
+                                        <input type="text" class="form-control" id="tiqvehiculo" name="tiqvehiculo" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="puesto">puesto:</label>
+                                        <input type="number" class="form-control" id="puesto" name="puesto" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="iva">iva:</label>
+                                        <input type="number" class="form-control" id="iva" name="iva" required>
+                                    </div>
+
+                            </div>
+                            
                                 <button type="submit" class="btn btn-primary">Guardar</button>
                         </form>
                     </div>

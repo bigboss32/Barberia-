@@ -4,6 +4,7 @@ from apps.terminal.services.crud_servicios import Servicios
 from apps.terminal.services.crud_ubicacion import Ubicacion
 from apps.terminal.services.crud_persona import Persona
 from apps.terminal.services.crud_vehiculo import Vehiculo
+from apps.terminal.services.crud_venta import Venta
 
 def index(request):
     return render(request, 'index.html')
@@ -44,4 +45,8 @@ def crear_documento(request):
 def crear_vehiculo(request):
      instancia=Vehiculo()
      return instancia.crearvehiculo(request)
+
+def crear_venta(request):
+     instancia=Venta()
+     return instancia.crearventa(request)
 

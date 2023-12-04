@@ -16,5 +16,6 @@ urlpatterns = [
     path("terminal/crear_persona/",crear_persona, name='crear_persona'),
     path("terminal/crear_documento/",crear_documento, name='crear_documento'),
     path("terminal/crear_vehiculo/",crear_vehiculo, name='crear_vehiculo'),
+    path("terminal/crear_venta/",crear_venta, name='crear_venta'),
     
 ]
