@@ -182,6 +182,14 @@
                   </a>
                 </li>
               </ul>
+              <ul class="nav nav-treeview">
+                <li class="nav-item">
+                  <a href="{% url 'crear_horario' %}"  class="nav-link">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>Crear Horario</p>
+                  </a>
+                </li>
+              </ul>
             </li>
             <li class="nav-item">
               <a href="#" class="nav-link">
@@ -200,39 +208,29 @@
                   </a>
                 </li>
                 <li class="nav-item">
-                  <a href="crear_venta" class="nav-link">
+                  <a href="{% url 'listar_venta' %}  " class="nav-link">
                     <i class="far fa-circle nav-icon"></i>
                     <p>Listar ventas</p>
                   </a>
                 </li>
-                <li class="nav-item">
-                  <a href="crear_venta" class="nav-link">
-                    <i class="far fa-circle nav-icon"></i>
-                    <p>Devoluviones ventas</p>
-                  </a>
-                </li>
+               
               </ul>
             </li>
 
           </ul>
         </nav>
-        <!-- /.sidebar-menu -->
-
+   
       </div>
-      <!-- /.sidebar -->
+
 
     </aside>
     {% block content %}
     {% endblock %}
-    <!-- Content Wrapper. Contains page content -->
 
-    <!-- Control Sidebar -->
     <aside class="control-sidebar control-sidebar-dark">
-      <!-- Control sidebar content goes here -->
-    </aside>
-    <!-- /.control-sidebar -->
 
-    <!-- Main Footer -->
+    </aside>
+
 
 
   </div>

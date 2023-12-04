@@ -1,0 +1,113 @@
+{% extends 'layouts/navbar.html' %}
+
+{% block content %}
+
+<div class="wrapper">
+    <div class="content-wrapper">
+        <div class="row justify-content-center">
+            <div class="col-md-8 mt-5">
+                <div class="card card-primary">
+                    <div class="card-header">
+                        <ul class="nav nav-tabs">
+
+                            <li class="nav-item">
+                                <a class="nav-link active" data-toggle="tab" href="#tab-persona">Horario</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" data-toggle="tab" href="#tab-documento">Cliente</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" data-toggle="tab" href="#tab-ubicacion">Tiquete</a>
+                            </li>
+
+                        </ul>
+                    </div>
+                    <div class="card-body">
+                        <form method="POST" action="{% url 'crear_venta' %}">
+                            {% csrf_token %}
+                            <div class="tab-content">
+                                <div class="tab-pane fade show active" id="tab-persona">
+                                
+                                 
+                                    <div class="form-group">
+                                        <label for="estado">Estado:</label>
+                                        <select class="form-control" id="estado" name="estado" required>
+                                            <option value="">Seleccione</option>
+                                            {% for datas in data %}
+                                            <option value="{{ datas.id }}">{{ datas.descripcion_estado }}</option>
+                                            {% endfor %}
+                                        </select>
+                                    </div>
+                                 
+                                    <div class="form-group">
+                                        <label for="dia_semana">Dia de la semana:</label>
+                                        <input type="date" class="form-control" id="dia_semana" name="dia_semana"
+                                            required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="hora">Hora Inicio:</label>
+                                        <input type="time" class="form-control" id="hora" name="hora" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="hora">Hora Final:</label>
+                                        <input type="time" class="form-control" id="hora" name="hora" required>
+                                    </div>
+
+                                    
+                                </div>
+                                <div class="tab-pane fade" id="tab-documento">
+                                    <!-- Campos de Ubicación -->
+                                    <div class="form-group">
+                                        <label for="Estado_Cliente">Estado Cliente:</label>
+                                        <select class="form-control" id="Estado_Cliente"
+                                            name="Estado_Cliente" required>
+                                            <option value="">Seleccione</option>
+                                            {% for datas in data %}
+                                            <option value="{{ datas.id }}">{{ datas.descripcion_estado }}</option>
+                                            {% endfor %}
+                                        </select>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="data_persona">Personas:</label>
+                                        <select class="form-control" id="data_persona" name="data_persona" required>
+                                            <option value="">Seleccione</option>
+                                            {% for datas in data_persona %}
+                                            <option value="{{ datas.id }}">{{ datas.nombres }}</option>
+                                            {% endfor %}
+                                        </select>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="fecha_registro">fecha registro:</label>
+                                        <input type="date" class="form-control" id="fecha_registro" step="any" name="fecha_registro"
+                                            required>
+                                    </div>
+                                    
+                                </div>
+                                <div class="tab-pane fade" id="tab-ubicacion">
+                                    <!-- Campos de Ubicación -->
+                                   
+                                    <div class="form-group">
+                                        <label for="tiqvehiculo">tiq vehiculo:</label>
+                                        <input type="text" class="form-control" id="tiqvehiculo" name="tiqvehiculo" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="puesto">puesto:</label>
+                                        <input type="number" class="form-control" id="puesto" name="puesto" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="iva">iva:</label>
+                                        <input type="number" class="form-control" id="iva" name="iva" required>
+                                    </div>
+
+                            </div>
+                            
+                                <button type="submit" class="btn btn-primary">Guardar</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

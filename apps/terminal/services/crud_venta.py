@@ -51,3 +51,12 @@ class Venta():
             columnas = [col[0] for col in cursor.description]  # Nombres de columnas
             data_persona = [dict(zip(columnas, fila)) for fila in cursor.fetchall()]
             return render(request, 'venta/Crear_venta.html',{'data': data,'data_ruta': data_ruta,'data_vehiculo':data_vehiculo,'data_persona':data_persona})
+
+    def listarventa(self,request):
+        if request.method == 'GET':
+             with connection.cursor() as cursor:
+                cursor.execute("SELECT * FROM data_venta")
+                columnas = [col[0] for col in cursor.description]  # Nombres de columnas
+                data = [dict(zip(columnas, fila)) for fila in cursor.fetchall()]
+                return render(request, 'venta/obtener_venta.html', {'data': data})
+        return render(request, 'venta/obtener_venta.html')
