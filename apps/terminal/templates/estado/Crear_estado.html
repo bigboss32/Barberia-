@@ -1,0 +1,41 @@
+{% extends 'layouts/navbar.html' %}
+
+{% block content %}
+
+<!-- Content Wrapper. Contains page content -->
+<div class="wrapper">
+    <div class="content-wrapper">
+        <div class="row justify-content-center">
+            <div class="col-md-8 mt-5">
+                <div class="card card-primary">
+                    <div class="card-header">
+                        <ul class="nav nav-tabs">
+                            <li class="nav-item">
+                                <a class="nav-link active" data-toggle="tab" href="#tab-persona">Persona</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="card-body">
+                        <form method="POST" action="{% url 'crear_estado' %}">
+                            {% csrf_token %}
+                            <div class="tab-content">
+                                <div class="form-group">
+                                    <label for="ciudad">Descripcion del estado:</label>
+                                    <input type="text" class="form-control" id="descripcion" name="descripcion" required>
+                                </div>
+                            </div>
+                            <button type="submit" class="btn btn-primary">Guardar</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+<!-- /.content-wrapper -->
+{% endblock %}

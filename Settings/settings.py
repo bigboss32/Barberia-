@@ -28,7 +28,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     "apps.session",
-    "apps.barbary",
+    "apps.terminal",
     "apps.data",
 
    
@@ -71,9 +71,9 @@ WSGI_APPLICATION = 'Settings.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'san_judas',
-        'USER': 'san_judas',
-        'PASSWORD': 'san_judas',
+        'NAME': 'admin',
+        'USER': 'admin',
+        'PASSWORD': 'admin',
         'HOST': 'postgis',  # El nombre del servicio de PostgreSQL en Docker
         'PORT': 5432,  # El puerto de PostgreSQL
     }

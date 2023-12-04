@@ -1,5 +1,6 @@
+
 from django.shortcuts import render, redirect
-from django.contrib.auth import authenticate, login
+from django.contrib.auth import authenticate, login,logout
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib import messages
 from django.contrib.auth import login, authenticate
@@ -51,3 +52,10 @@ def registrar_usuario(request):
         except Exception as e:
             return render(request, 'registro_usuario.html', {'error': str(e)})
   return render(request, 'registro_usuario.html')
+
+def cerrar_sesion(request):
+    logout(request)
+    print("entre")
+    messages.success(request, "Has cerrado sesión con éxito.")
+    return redirect('iniciar_sesion')
+ 

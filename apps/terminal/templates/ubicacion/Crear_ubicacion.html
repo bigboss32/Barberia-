@@ -1,0 +1,75 @@
+{% extends 'layouts/navbar.html' %}
+
+{% block content %}
+
+<!-- Content Wrapper. Contains page content -->
+<div class="wrapper">
+    <div class="content-wrapper">
+        <div class="row justify-content-center">
+            <div class="col-md-8 mt-5">
+                <div class="card card-primary">
+                    <div class="card-header">
+                        <ul class="nav nav-tabs">
+                            <li class="nav-item">
+                                <a class="nav-link active" data-toggle="tab" href="#tab-persona">Departamento</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" data-toggle="tab" href="#tab-ubicacion">Ciudad</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="card-body">
+                        <form method="POST" action="{% url 'crear_ubicacion' %}">
+                            {% csrf_token %}
+                            <div class="tab-content">
+                                <div class="tab-pane fade show active" id="tab-persona">
+                                    <!-- Campos de Persona -->
+                                    <div class="form-group">
+                                        <label for="nombre">Nombre:</label>
+                                        <input type="text" class="form-control" id="nombre" name="nombre" required>
+                                    </div>
+                                
+                                    <div class="form-group">
+                                        <label for="tipo_documento">Estado:</label>
+                                        <select class="form-control" id="tipo_estado" name="tipo_estado" required>
+                                            <option value="">Seleccione</option>
+                                            {% for datas in data %}
+                                            <option value="{{ datas.id }}">{{ datas.descripcion_estado }}</option>
+                                            {% endfor %}
+                                        </select>
+                                    </div>
+                                    
+                                </div>
+                                <div class="tab-pane fade" id="tab-ubicacion">
+                                    <!-- Campos de Ubicación -->
+                                    <div class="form-group">
+                                        <label for="ciudad">Ciudad:</label>
+                                        <input type="text" class="form-control" id="ciudad" name="ciudad" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="tipo_documento">Estado:</label>
+                                        <select class="form-control" id="tipo_estado_ciudad" name="tipo_estado_ciudad" required>
+                                            <option value="">Seleccione</option>
+                                            {% for datas in data %}
+                                            <option value="{{ datas.id }}">{{ datas.descripcion_estado }}</option>
+                                            {% endfor %}
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            <button type="submit" class="btn btn-primary">Guardar</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+<!-- /.content-wrapper -->
+{% endblock %}

@@ -1,0 +1,61 @@
+{% extends 'layouts/navbar.html' %}
+
+{% block content %}
+
+<!-- Content Wrapper. Contains page content -->
+<div class="wrapper">
+    <div class="content-wrapper">
+        <div class="row justify-content-center">
+            <div class="col-md-8 mt-5">
+                <div class="card card-primary">
+                    <h2>Lista de estados</h2>
+                    <table class="table table-bordered table-striped">
+                        <thead class="thead-dark">
+                            <tr>
+                                <th>ID</th>
+                                <th>Estado</th>
+                                <th>Acciones</th> <!-- Nueva columna para botones -->
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for datas in data %}
+                            <tr>
+                                <td>{{ datas.id }}</td>
+                                <form method="POST" action="{% url 'editar_estado' %}">
+                                    {% csrf_token %}
+                                    <td>
+                                        <div class="form-group">
+                                            <input type="text" class="form-control" id="descripcion"
+                                                value="{{datas.descripcion_estado}}" name="descripcion" required>
+                                            <input type="hidden" name="id" value="{{ datas.id }}">
+                                        </div>
+
+                                    </td>
+                                    <td>
+
+                                        <button class="btn btn-sm btn-primary ">Modifica</button>
+                                </form>
+
+                                <form method="POST" action="{% url 'eliminar_estado' %}">
+                                    {% csrf_token %}
+                                    <input type="hidden" name="id" value="{{ datas.id }}">
+                                    <button class="btn btn-sm btn-danger">Eliminar</button>
+                                </form>
+                                </td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+<!-- /.content-wrapper -->
+{% endblock %}

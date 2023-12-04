@@ -37,14 +37,14 @@
       <ul class="navbar-nav">
 
         <li class="nav-item d-none d-sm-inline-block">
-          <a href="home" class="nav-link">Home</a>
+          <a href="{% url 'index' %}" class="nav-link">Home</a>
         </li>
         <li class="nav-item d-none d-sm-inline-block">
           <a href="#" class="nav-link">Contact</a>
         </li>
         {% if user.is_authenticated %}
         <li class="nav-item d-none d-sm-inline-block">
-          <a href="cerrar_sesion" class="nav-link">Cerrar sesión</a>
+          <a href="{% url 'cerrar_sesion' %}" class="nav-link">Cerrar sesión</a>
         </li>
 
         {% endif %}
@@ -62,9 +62,9 @@
     <!-- Main Sidebar Container -->
     <aside class="main-sidebar sidebar-dark-primary elevation-4">
       <!-- Brand Logo -->
-      <a href="index3.html" class="brand-link">
+      <a href="{% url 'index' %}" class="brand-link">
 
-        <span class="brand-text font-weight-light">AdminLTE 3</span>
+        <span class="brand-text font-weight-light">Terminal</span>
       </a>
 
       <!-- Sidebar -->
@@ -86,35 +86,27 @@
             <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
 
-            <li class="nav-item">
-              <a href="pages/widgets.html" class="nav-link">
-                <i class="nav-icon fas fa-th"></i>
-                <p>
-                  Widgets
-                  <span class="right badge badge-danger">New</span>
-                </p>
-              </a>
-            </li>
+       
             <li class="nav-item">
               <a href="#" class="nav-link">
                 <i class="nav-icon fas fa-copy"></i>
                 <p>
-                  Compradores
+                  Estados
                   <i class="fas fa-angle-left right"></i>
 
                 </p>
               </a>
               <ul class="nav nav-treeview">
                 <li class="nav-item">
-                  <a href="crear_cita" class="nav-link">
+                  <a href="{% url 'crear_estado' %}  " class="nav-link">
                     <i class="far fa-circle nav-icon"></i>
-                    <p>Crear Cita</p>
+                    <p>Crear Estado</p>
                   </a>
                 </li>
                 <li class="nav-item">
-                  <a href="crear_comprador" class="nav-link">
+                  <a href="{% url 'obtener_estado' %}" class="nav-link">
                     <i class="far fa-circle nav-icon"></i>
-                    <p>Listar Citas</p>
+                    <p>Listar Estado</p>
                   </a>
                 </li>
               </ul>
@@ -123,28 +115,70 @@
               <a href="#" class="nav-link">
                 <i class="nav-icon fas fa-copy"></i>
                 <p>
-                  Articulos
+                  Servicios
                   <i class="fas fa-angle-left right"></i>
 
                 </p>
               </a>
               <ul class="nav nav-treeview">
                 <li class="nav-item">
-                  <a href="crear_articulo" class="nav-link">
+                  <a href="{% url 'crear_servicios' %}  " class="nav-link">
                     <i class="far fa-circle nav-icon"></i>
-                    <p>Crear Articulo</p>
+                    <p>Crear Servicios</p>
                   </a>
                 </li>
                 <li class="nav-item">
-                  <a href="crear_articulo" class="nav-link">
+                  <a href="{% url 'obtener_servicios' %}" class="nav-link">
                     <i class="far fa-circle nav-icon"></i>
-                    <p>Crear categoria</p>
+                    <p>Listar Servicios</p>
+                  </a>
+                </li>
+              </ul>
+            </li>
+            <li class="nav-item">
+              <a href="#" class="nav-link">
+                <i class="nav-icon fas fa-copy"></i>
+                <p>
+                  Persona
+                  <i class="fas fa-angle-left right"></i>
+
+                </p>
+              </a>
+              <ul class="nav nav-treeview">
+                <li class="nav-item">
+                  <a href="{% url 'crear_persona' %}  " class="nav-link">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>Crear Persona</p>
                   </a>
                 </li>
                 <li class="nav-item">
-                  <a href="crear_articulo" class="nav-link">
+                  <a href="{% url 'crear_ubicacion' %}" class="nav-link">
                     <i class="far fa-circle nav-icon"></i>
-                    <p>listar articulos</p>
+                    <p>Departamento y Ciudad</p>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a href="{% url 'crear_documento' %}" class="nav-link">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>Tipo documento</p>
+                  </a>
+                </li>
+              </ul>
+            </li>
+            <li class="nav-item">
+              <a href="#" class="nav-link">
+                <i class="nav-icon fas fa-copy"></i>
+                <p>
+                  Vehiculo
+                  <i class="fas fa-angle-left right"></i>
+
+                </p>
+              </a>
+              <ul class="nav nav-treeview">
+                <li class="nav-item">
+                  <a href="{% url 'crear_vehiculo' %}"  class="nav-link">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>Crear vehiculo</p>
                   </a>
                 </li>
               </ul>

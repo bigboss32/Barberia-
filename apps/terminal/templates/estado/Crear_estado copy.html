@@ -19,7 +19,7 @@
                         </ul>
                     </div>
                     <div class="card-body">
-                        <form method="POST" action="">
+                        <form method="POST" action="{% url 'crear_estado' %}">
                             {% csrf_token %}
                             <div class="tab-content">
                                 <div class="tab-pane fade show active" id="tab-persona">
